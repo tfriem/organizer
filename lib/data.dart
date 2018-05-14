@@ -4,13 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:redux/redux.dart';
 
+import 'user.dart';
+
 AppState appReducer(AppState state, dynamic action) {
   return AppState(authReducer(state.auth, action));
 }
 
 AuthState authReducer(AuthState state, dynamic action) {
   if (action is UserLoadedAction) {
-    return new AuthState(action.firebaseUser);
+    return new AuthState(FirebaseBackedUser(firebaseUser: action.firebaseUser));
   }
   return state;
 }
@@ -23,10 +25,10 @@ class AppState {
 }
 
 class AuthState {
-  final FirebaseUser firebaseUser;
+  final User user;
 
-  AuthState(this.firebaseUser);
-  AuthState.initialState() : firebaseUser = null;
+  AuthState(this.user);
+  AuthState.initialState() : user = null;
 }
 
 class InitAppAction {}

@@ -7,8 +7,7 @@ import 'work_time_tracker.dart';
 
 void main() {
   final store = new Store<AppState>(appReducer,
-      initialState: AppState.initialState(),
-      middleware: [firebaseMiddleware].toList());
+      initialState: AppState.initialState(), middleware: [firebaseMiddleware]);
   store.dispatch(InitAppAction());
   runApp(new OrganizerApp(store: store));
 }

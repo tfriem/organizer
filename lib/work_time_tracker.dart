@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import 'data.dart';
+import 'user.dart';
 
 class WorkTimeTrackerScreen extends StatelessWidget {
   @override
@@ -18,9 +18,9 @@ class WorkTimeTrackerScreen extends StatelessWidget {
 }
 
 class LoginViewModel {
-  final FirebaseUser firebaseUser;
+  final User user;
 
-  LoginViewModel(this.firebaseUser);
+  LoginViewModel(this.user);
 }
 
 class LoginState extends StatelessWidget {
@@ -28,10 +28,10 @@ class LoginState extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, LoginViewModel>(
       converter: (Store<AppState> store) =>
-          new LoginViewModel(store.state.auth.firebaseUser),
+          new LoginViewModel(store.state.auth.user),
       builder: (BuildContext context, LoginViewModel vm) {
         return new Column(children: <Widget>[
-          Text(vm.firebaseUser?.displayName ?? 'Not logged in.'),
+          Text(vm.user?.name ?? 'Not logged in.'),
         ]);
       },
     );
