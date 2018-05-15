@@ -12,7 +12,9 @@ class WorkTimeTrackerScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Work Time Tracker'),
       ),
-      body: LoginState(),
+      body: new Column(
+        children: <Widget>[LoginState(), DataDisplay()],
+      ),
     );
   }
 }
@@ -28,11 +30,33 @@ class LoginState extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, LoginViewModel>(
       converter: (Store<AppState> store) =>
-          new LoginViewModel(store.state.auth.user),
+          LoginViewModel(store.state.auth.user),
       builder: (BuildContext context, LoginViewModel vm) {
-        return new Column(children: <Widget>[
+        return Column(children: <Widget>[
           Text(vm.user?.name ?? 'Not logged in.'),
         ]);
+      },
+    );
+  }
+}
+
+class DataDisplayViewModel {
+  final Map<Date, WorkTimeData> bookings;
+
+  DataDisplayViewModel(this.bookings);
+}
+
+class DataDisplay extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StoreConnector<AppState, DataDisplayViewModel>(
+      converter: (Store<AppState> store) =>
+          DataDisplayViewModel(store.state.workTimeTracker.bookings),
+      builder: (BuildContext context, DataDisplayViewModel vm) {
+        return Column(
+            children: vm.bookings.entries.map((booking) {
+          return Text(booking.key.asDateTime().toString());
+        }).toList());
       },
     );
   }
