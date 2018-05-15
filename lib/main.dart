@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-import 'data.dart';
-import 'work_time_tracker.dart';
+import 'app/actions.dart';
+import 'app/model.dart';
+import 'app/reducers.dart';
+import 'auth/reducers.dart';
+import 'work-time-tracker/reducers.dart';
+import 'work-time-tracker/screen.dart';
 
 void main() {
-  final store = new Store<AppState>(appReducer,
-      initialState: AppState.initialState(), middleware: [firebaseMiddleware]);
-  store.dispatch(InitAppAction());
-  runApp(new OrganizerApp(store: store));
+  final store = Store<AppState>(appReducer,
+      initialState: AppState.initialState(),
+      middleware: [authMiddleware, workTimeTrackerMiddleware]);
+  store.dispatch(AppInitialized());
+  runApp(OrganizerApp(store: store));
 }
 
 class OrganizerApp extends StatelessWidget {

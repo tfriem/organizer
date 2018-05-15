@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-import 'data.dart';
-import 'user.dart';
+import '../app/model.dart';
+import '../auth/model.dart';
+import '../core/date.dart';
+import 'model.dart';
 
 class WorkTimeTrackerScreen extends StatelessWidget {
   @override
@@ -12,7 +14,7 @@ class WorkTimeTrackerScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Work Time Tracker'),
       ),
-      body: new Column(
+      body: Column(
         children: <Widget>[LoginState(), DataDisplay()],
       ),
     );
@@ -41,7 +43,7 @@ class LoginState extends StatelessWidget {
 }
 
 class DataDisplayViewModel {
-  final Map<Date, WorkTimeData> bookings;
+  final Map<Date, Booking> bookings;
 
   DataDisplayViewModel(this.bookings);
 }

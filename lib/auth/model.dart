@@ -1,11 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
+@immutable
+class AuthState {
+  final User user;
+
+  AuthState(this.user);
+  AuthState.initialState() : user = null;
+}
+
+@immutable
 abstract class User {
   String get id;
   String get name;
 }
 
+@immutable
 class FirebaseBackedUser implements User {
   final FirebaseUser firebaseUser;
 
