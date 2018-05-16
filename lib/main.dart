@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_logging/redux_logging.dart';
 
 import 'app/actions.dart';
 import 'app/model.dart';
@@ -17,7 +18,11 @@ void main() {
 
   final store = Store<AppState>(appReducer,
       initialState: AppState.initialState(),
-      middleware: [authMiddleware, workTimeTrackerMiddleware]);
+      middleware: [
+        LoggingMiddleware.printer(),
+        authMiddleware,
+        workTimeTrackerMiddleware
+      ]);
   store.dispatch(AppInitialized());
   runApp(OrganizerApp(store: store));
 }
