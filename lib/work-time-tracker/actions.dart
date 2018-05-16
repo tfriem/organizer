@@ -12,3 +12,10 @@ class WorkTimeBookingsLoadingSucceeded {
 
   WorkTimeBookingsLoadingSucceeded(this.bookings);
 }
+
+@immutable
+class WorkTimeSelectDay {
+  final Date selectedDay;
+
+  WorkTimeSelectDay(this.selectedDay);
+}

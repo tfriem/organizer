@@ -10,6 +10,8 @@ WorkTimeTrackerState workTimeTrackerReducer(
     WorkTimeTrackerState state, dynamic action) {
   if (action is WorkTimeBookingsLoadingSucceeded) {
     return WorkTimeTrackerState(action.bookings, state.selectedDate);
+  } else if (action is WorkTimeSelectDay) {
+    return WorkTimeTrackerState(state.bookings, action.selectedDay);
   }
 
   return state;

@@ -6,6 +6,8 @@ import '../app/model.dart';
 import '../auth/model.dart';
 import '../core/date.dart';
 import 'model.dart';
+import 'horizontal_calendar.dart';
+import 'booking_detail.dart';
 
 class WorkTimeTrackerScreen extends StatelessWidget {
   @override
@@ -15,7 +17,10 @@ class WorkTimeTrackerScreen extends StatelessWidget {
         title: Text('Work Time Tracker'),
       ),
       body: Column(
-        children: <Widget>[LoginState(), DataDisplay()],
+        children: <Widget>[
+          Expanded(child: BookingDetail()),
+          Container(height: 100.0, child: HorizontalCalendar())
+        ],
       ),
     );
   }
@@ -57,7 +62,7 @@ class DataDisplay extends StatelessWidget {
       builder: (BuildContext context, DataDisplayViewModel vm) {
         return Column(
             children: vm.bookings.entries.map((booking) {
-          return Text(booking.key.asDateTime().toString());
+          return Text(booking.key.toDateTime().toString());
         }).toList());
       },
     );

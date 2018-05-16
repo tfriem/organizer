@@ -13,5 +13,14 @@ class Date {
         month = dateTime.month,
         day = dateTime.day;
 
-  DateTime asDateTime() => DateTime(year, month, day);
+  DateTime toDateTime() => DateTime(year, month, day);
+
+  @override
+  String toString() =>
+      '$year${month.toString().padLeft(2,'0')}${day.toString().padLeft(2, '0')}';
+
+  bool operator ==(o) =>
+      o is Date && o.year == year && o.month == month && o.day == day;
+
+  int get hashCode => year * 10000 + month * 100 + day;
 }
