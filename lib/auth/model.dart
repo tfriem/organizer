@@ -11,12 +11,18 @@ class AuthState {
   AuthState copyWith({User user}) {
     return AuthState(user: user ?? this.user);
   }
+
+  @override
+  toString() => 'AuthState{user: $user}';
 }
 
 @immutable
 abstract class User {
   String get id;
   String get name;
+
+  @override
+  String toString() => 'User{id: $id, name: $name}';
 }
 
 @immutable
@@ -30,4 +36,7 @@ class FirebaseBackedUser implements User {
   String get name => firebaseUser.displayName;
 
   FirebaseBackedUser({@required this.firebaseUser});
+
+  @override
+  String toString() => 'FirebaseBackedUser{id: $id, name: $name}';
 }

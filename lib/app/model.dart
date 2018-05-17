@@ -18,4 +18,8 @@ class AppState {
         auth: auth ?? this.auth,
         workTimeTracker: workTimeTracker ?? this.workTimeTracker);
   }
+
+  @override
+  String toString() =>
+      'AuthState{auth: $auth, workTimeTracker: $workTimeTracker}';
 }

@@ -19,7 +19,8 @@ void main() {
   final store = Store<AppState>(appReducer,
       initialState: AppState.initialState(),
       middleware: [
-        LoggingMiddleware.printer(),
+        LoggingMiddleware.printer(
+            formatter: LoggingMiddleware.multiLineFormatter),
         authMiddleware,
         workTimeTrackerMiddleware
       ]);
