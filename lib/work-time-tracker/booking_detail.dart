@@ -68,7 +68,9 @@ class BookingDetail extends StatelessWidget {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            new Expanded(child: new Text(displayText)),
+            new Expanded(
+                child: new Text(displayText,
+                    style: Theme.of(context).primaryTextTheme.subhead)),
             new IconButton(
               icon: new Icon(Icons.edit),
               onPressed: onEditButtonPressed(context, initialTime, callback),
