@@ -12,7 +12,8 @@ import 'model.dart';
 
 AuthState authReducer(AuthState state, dynamic action) {
   if (action is UserAuthenticationSucceeded) {
-    return AuthState(FirebaseBackedUser(firebaseUser: action.firebaseUser));
+    return state.copyWith(
+        user: FirebaseBackedUser(firebaseUser: action.firebaseUser));
   }
   return state;
 }

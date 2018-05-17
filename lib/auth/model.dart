@@ -5,8 +5,12 @@ import 'package:meta/meta.dart';
 class AuthState {
   final User user;
 
-  AuthState(this.user);
+  AuthState({this.user});
   AuthState.initialState() : user = null;
+
+  AuthState copyWith({User user}) {
+    return AuthState(user: user ?? this.user);
+  }
 }
 
 @immutable

@@ -3,6 +3,7 @@ import '../work-time-tracker/reducers.dart';
 import 'model.dart';
 
 AppState appReducer(AppState state, dynamic action) {
-  return AppState(authReducer(state.auth, action),
-      workTimeTrackerReducer(state.workTimeTracker, action));
+  return state.copyWith(
+      auth: authReducer(state.auth, action),
+      workTimeTracker: workTimeTrackerReducer(state.workTimeTracker, action));
 }
