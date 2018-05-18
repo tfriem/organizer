@@ -32,9 +32,9 @@ class BookingDetail extends StatelessWidget {
         if (vm.booking?.end != null) {
           endTime = TimeOfDay.fromDateTime(vm.booking.end);
         }
-        return new Column(
+        return Column(
           children: <Widget>[
-            new Padding(
+            Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
                   DateFormat("yMMMMEEEEd").format(vm.selectedDay.toDateTime()),
@@ -62,22 +62,22 @@ class BookingDetail extends StatelessWidget {
       displayText = displayTime.format(context);
       initialTime = displayTime;
     }
-    return new Card(
-      child: new Padding(
-        padding: new EdgeInsets.all(12.0),
-        child: new Row(
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            new Expanded(
-                child: new Text(displayText,
+            Expanded(
+                child: Text(displayText,
                     style: Theme.of(context).textTheme.subhead)),
-            new IconButton(
-              icon: new Icon(Icons.edit),
+            IconButton(
+              icon: Icon(Icons.edit),
               color: Colors.black54,
               onPressed: onEditButtonPressed(context, initialTime, callback),
             ),
-            new IconButton(
-              icon: new Icon(Icons.delete_outline),
+            IconButton(
+              icon: Icon(Icons.delete_outline),
               color: Colors.red[900],
               onPressed: onDeleteButtonPressed(callback),
             ),
