@@ -76,7 +76,7 @@ class BookingDetail extends StatelessWidget {
               onPressed: onEditButtonPressed(context, initialTime, callback),
             ),
             new IconButton(
-              icon: new Icon(Icons.delete_forever),
+              icon: new Icon(Icons.delete_outline),
               onPressed: onDeleteButtonPressed(callback),
             ),
           ],

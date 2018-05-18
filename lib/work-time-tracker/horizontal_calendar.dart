@@ -47,9 +47,7 @@ class HorizontalCalendar extends StatelessWidget {
             : Theme.of(context).cardColor;
         final textColor = vm.selected
             ? Theme.of(context).accentTextTheme.button.color
-            : vm.fullyBooked
-                ? Colors.green
-                : Theme.of(context).textTheme.button.color;
+            : Theme.of(context).textTheme.button.color;
         return FlatButton(
           color: backgroundColor,
           child: Column(
@@ -71,6 +69,13 @@ class HorizontalCalendar extends StatelessWidget {
               ),
               Text(DateFormat("MMM").format(dateTime),
                   style: TextStyle(color: textColor, fontSize: 10.0)),
+              Icon(
+                vm.fullyBooked
+                    ? Icons.check_box
+                    : Icons.check_box_outline_blank,
+                size: 14.0,
+                color: vm.fullyBooked ? Colors.green : textColor,
+              )
             ],
           ),
           onPressed: vm.onClick,
