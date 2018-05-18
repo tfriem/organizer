@@ -26,7 +26,9 @@ class WorkTimeTrackerScreen extends StatelessWidget {
               Column(
                 children: <Widget>[
                   Expanded(child: BookingDetail()),
-                  Container(height: 100.0, child: HorizontalCalendar())
+                  Card(
+                      child:
+                          Container(height: 100.0, child: HorizontalCalendar()))
                 ],
               ),
               Overview(),

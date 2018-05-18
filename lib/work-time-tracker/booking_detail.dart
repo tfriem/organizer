@@ -70,13 +70,15 @@ class BookingDetail extends StatelessWidget {
           children: <Widget>[
             new Expanded(
                 child: new Text(displayText,
-                    style: Theme.of(context).primaryTextTheme.subhead)),
+                    style: Theme.of(context).textTheme.subhead)),
             new IconButton(
               icon: new Icon(Icons.edit),
+              color: Colors.black54,
               onPressed: onEditButtonPressed(context, initialTime, callback),
             ),
             new IconButton(
               icon: new Icon(Icons.delete_outline),
+              color: Colors.red[900],
               onPressed: onDeleteButtonPressed(callback),
             ),
           ],

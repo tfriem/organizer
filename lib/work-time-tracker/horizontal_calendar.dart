@@ -43,13 +43,15 @@ class HorizontalCalendar extends StatelessWidget {
       builder: (BuildContext context, DayViewModel vm) {
         final dateTime = day.toDateTime();
         final backgroundColor = vm.selected
-            ? Theme.of(context).accentColor
+            ? Theme.of(context).primaryColor
             : Theme.of(context).cardColor;
         final textColor = vm.selected
-            ? Theme.of(context).accentTextTheme.button.color
+            ? Theme.of(context).primaryTextTheme.button.color
             : Theme.of(context).textTheme.button.color;
         return FlatButton(
           color: backgroundColor,
+          textTheme:
+              vm.selected ? ButtonTextTheme.primary : ButtonTextTheme.normal,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +76,7 @@ class HorizontalCalendar extends StatelessWidget {
                     ? Icons.check_box
                     : Icons.check_box_outline_blank,
                 size: 14.0,
-                color: vm.fullyBooked ? Colors.green : textColor,
+                color: vm.fullyBooked ? Colors.green[400] : textColor,
               )
             ],
           ),

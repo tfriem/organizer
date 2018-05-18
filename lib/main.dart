@@ -40,9 +40,9 @@ class OrganizerApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Organizer',
         theme: ThemeData(
-          brightness: Brightness.dark,
-          primarySwatch: Colors.grey,
-          accentColor: Colors.greenAccent,
+          brightness: Brightness.light,
+          primarySwatch: Colors.blueGrey,
+          accentColor: Colors.amberAccent,
         ),
         home: WorkTimeTrackerScreen(),
       ),

@@ -13,11 +13,11 @@ class Overview extends StatelessWidget {
         final fullyBookedTimes = store.state.workTimeTracker.bookings.values
             .where((booking) => booking.start != null && booking.end != null);
 
-        final startTimes = fullyBookedTimes.map((booking) => new Duration(
+        final startTimes = fullyBookedTimes.map((booking) => Duration(
             hours: booking.start.hour,
             minutes: booking.start.minute,
             seconds: booking.start.second));
-        final endTimes = fullyBookedTimes.map((booking) => new Duration(
+        final endTimes = fullyBookedTimes.map((booking) => Duration(
             hours: booking.end.hour,
             minutes: booking.end.minute,
             seconds: booking.end.second));
@@ -35,34 +35,34 @@ class Overview extends StatelessWidget {
       },
       builder: (BuildContext context, OverviewViewModel vm) {
         return Column(children: <Widget>[
-          new Padding(
+          Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
               'Booked days: ${vm.bookedDays}',
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
-          new Padding(
+          Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
               'Average starting time: ${_formatDuration(vm.averageStartTime)}',
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
-          new Padding(
+          Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
               'Average ending time: ${_formatDuration(vm.averageEndTime)}',
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
-          new Padding(
+          Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
                 'Average duration: ${_formatDuration(vm.averageWorkDuration)}',
                 style: Theme.of(context).textTheme.subhead),
           ),
-          new Padding(
+          Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text('Saldo: ${_formatDuration(vm.workSaldo.abs())}',
                   style: TextStyle(
