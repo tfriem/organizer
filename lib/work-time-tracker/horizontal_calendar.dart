@@ -27,6 +27,8 @@ class HorizontalCalendar extends StatelessWidget {
     return StoreConnector<AppState, DayViewModel>(
       converter: (Store<AppState> store) => DayViewModel(
           store.state.workTimeTracker.selectedDate == day,
+          store.state.workTimeTracker.bookings[day]?.start != null &&
+              store.state.workTimeTracker.bookings[day]?.end != null,
           () => store.dispatch(WorkTimeSelectDay(day))),
       builder: (BuildContext context, DayViewModel vm) {
         final dateTime = day.toDateTime();
@@ -35,7 +37,9 @@ class HorizontalCalendar extends StatelessWidget {
             : Theme.of(context).cardColor;
         final textColor = vm.selected
             ? Theme.of(context).accentTextTheme.button.color
-            : Theme.of(context).textTheme.button.color;
+            : vm.fullyBooked
+                ? Colors.green
+                : Theme.of(context).textTheme.button.color;
         return FlatButton(
           color: backgroundColor,
           child: Column(
@@ -69,7 +73,8 @@ class HorizontalCalendar extends StatelessWidget {
 @immutable
 class DayViewModel {
   final bool selected;
+  final bool fullyBooked;
   final VoidCallback onClick;
 
-  DayViewModel(this.selected, this.onClick);
+  DayViewModel(this.selected, this.fullyBooked, this.onClick);
 }
