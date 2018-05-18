@@ -10,26 +10,27 @@ class Overview extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, OverviewViewModel>(
       converter: (Store<AppState> store) {
-        final bookedTimes = store.state.workTimeTracker.bookings.values;
+        final fullyBookedTimes = store.state.workTimeTracker.bookings.values
+            .where((booking) => booking.start != null && booking.end != null);
 
-        final startTimes = bookedTimes.map((booking) => new Duration(
+        final startTimes = fullyBookedTimes.map((booking) => new Duration(
             hours: booking.start.hour,
             minutes: booking.start.minute,
             seconds: booking.start.second));
-        final endTimes = bookedTimes.map((booking) => new Duration(
+        final endTimes = fullyBookedTimes.map((booking) => new Duration(
             hours: booking.end.hour,
             minutes: booking.end.minute,
             seconds: booking.end.second));
-        final workDurations = bookedTimes.map((booking) =>
+        final workDurations = fullyBookedTimes.map((booking) =>
             booking.end.difference(booking.start) - Duration(minutes: 30));
 
         final averageStartTime = _calculateAverageTime(startTimes.toList());
         final averageEndTime = _calculateAverageTime(endTimes.toList());
         final averageWorkTime = _calculateAverageTime(workDurations.toList());
         final workSaldo =
-            (averageWorkTime - Duration(hours: 8)) * bookedTimes.length;
+            (averageWorkTime - Duration(hours: 8)) * fullyBookedTimes.length;
 
-        return OverviewViewModel(bookedTimes.length, averageStartTime,
+        return OverviewViewModel(fullyBookedTimes.length, averageStartTime,
             averageEndTime, averageWorkTime, workSaldo);
       },
       builder: (BuildContext context, OverviewViewModel vm) {
