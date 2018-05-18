@@ -11,13 +11,23 @@ import 'actions.dart';
 class HorizontalCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int skippedDays = 0;
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       reverse: true,
       itemExtent: 72.0,
       itemBuilder: (BuildContext context, int index) {
-        Date day = Date
-            .fromDateTime(DateTime.now().subtract(Duration(days: index - 2)));
+        DateTime dateTime =
+            DateTime.now().subtract(Duration(days: index - 2 + skippedDays));
+        if (dateTime.weekday == DateTime.sunday) {
+          skippedDays += 2;
+          dateTime = dateTime.subtract(Duration(days: 2));
+        } else if (dateTime.weekday == DateTime.saturday) {
+          skippedDays += 1;
+          dateTime = dateTime.subtract(Duration(days: 1));
+        }
+        Date day = Date.fromDateTime(dateTime);
+
         return _buildDayItem(day);
       },
     );
