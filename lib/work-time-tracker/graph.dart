@@ -14,6 +14,10 @@ class Graph extends StatelessWidget {
         converter: (Store<AppState> store) =>
             GraphViewModel(store.state.workTimeTracker.bookings),
         builder: (BuildContext context, GraphViewModel vm) {
+          final data = vm.bookings.entries
+              .where((entry) =>
+                  entry.value.start != null && entry.value.end != null)
+              .toList();
           return charts.TimeSeriesChart(
             [
               charts.Series<MapEntry<Date, Booking>, DateTime>(
@@ -21,14 +25,14 @@ class Graph extends StatelessWidget {
                 domainFn: (datum, int index) => datum.key.toDateTime(),
                 measureFn: (datum, int index) =>
                     datum.value.start.hour * 100 + datum.value.start.minute,
-                data: vm.bookings.entries.toList(),
+                data: data,
               ),
               charts.Series<MapEntry<Date, Booking>, DateTime>(
                 id: 'End',
                 domainFn: (datum, int index) => datum.key.toDateTime(),
                 measureFn: (datum, int index) =>
                     datum.value.end.hour * 100 + datum.value.end.minute,
-                data: vm.bookings.entries.toList(),
+                data: data,
               )
             ],
             behaviors: [
