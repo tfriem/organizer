@@ -25,6 +25,8 @@ class Booking {
 
   Booking(this.start, this.end, this.breakDuration);
 
+  bool isFullyBooked() => start != null && end != null;
+
   @override
   String toString() =>
       'Booking{start: $start, end: $end, breakDuration: $breakDuration}';

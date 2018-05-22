@@ -37,8 +37,7 @@ class HorizontalCalendar extends StatelessWidget {
     return StoreConnector<AppState, DayViewModel>(
       converter: (Store<AppState> store) => DayViewModel(
           store.state.workTimeTracker.selectedDate == day,
-          store.state.workTimeTracker.bookings[day]?.start != null &&
-              store.state.workTimeTracker.bookings[day]?.end != null,
+          store.state.workTimeTracker.bookings[day]?.isFullyBooked() ?? false,
           () => store.dispatch(WorkTimeSelectDay(day))),
       builder: (BuildContext context, DayViewModel vm) {
         final dateTime = day.toDateTime();

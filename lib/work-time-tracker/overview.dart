@@ -11,7 +11,7 @@ class Overview extends StatelessWidget {
     return StoreConnector<AppState, OverviewViewModel>(
       converter: (Store<AppState> store) {
         final fullyBookedTimes = store.state.workTimeTracker.bookings.values
-            .where((booking) => booking.start != null && booking.end != null);
+            .where((booking) => booking.isFullyBooked());
 
         final startTimes = fullyBookedTimes.map((booking) => Duration(
             hours: booking.start.hour,

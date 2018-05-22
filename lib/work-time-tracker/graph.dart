@@ -15,8 +15,7 @@ class Graph extends StatelessWidget {
             GraphViewModel(store.state.workTimeTracker.bookings),
         builder: (BuildContext context, GraphViewModel vm) {
           final data = vm.bookings.entries
-              .where((entry) =>
-                  entry.value.start != null && entry.value.end != null)
+              .where((entry) => entry.value.isFullyBooked())
               .toList();
           return charts.TimeSeriesChart(
             [
