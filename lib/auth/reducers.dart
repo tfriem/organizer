@@ -19,14 +19,18 @@ AuthState authReducer(AuthState state, dynamic action) {
 }
 
 authMiddleware(Store<AppState> store, action, NextDispatcher next) {
-  if (action is AppInitialized) {
+  if (action is UserAuthenticationRequested) {
     FirebaseAuth.instance.currentUser().then((user) {
       if (user != null) {
         store.dispatch(UserAuthenticationSucceeded(user));
         store.dispatch(WorkTimeBookingsLoadingRequestet());
+        store.dispatch(NavigateAction('/worktimetracker'));
       } else {
-        _handleLogin()
-            .then((user) => store.dispatch(UserAuthenticationSucceeded(user)));
+        _handleLogin().then((user) {
+          store.dispatch(UserAuthenticationSucceeded(user));
+          store.dispatch(WorkTimeBookingsLoadingRequestet());
+          store.dispatch(NavigateAction('/worktimetracker'));
+        });
       }
     });
   }

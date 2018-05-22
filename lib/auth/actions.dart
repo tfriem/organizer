@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 @immutable
+class UserAuthenticationRequested {}
+
+@immutable
 class UserAuthenticationSucceeded {
   final FirebaseUser firebaseUser;
 

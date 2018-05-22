@@ -1,4 +1,8 @@
 import 'package:meta/meta.dart';
 
 @immutable
-class AppInitialized {}
+class NavigateAction {
+  final String target;
+
+  NavigateAction(this.target);
+}

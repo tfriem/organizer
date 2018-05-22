@@ -5,12 +5,14 @@ import 'package:intl/intl.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 
-import 'app/actions.dart';
 import 'app/model.dart';
 import 'app/reducers.dart';
+import 'app/welcome_screen.dart';
 import 'auth/reducers.dart';
 import 'work-time-tracker/reducers.dart';
 import 'work-time-tracker/screen.dart';
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   initializeDateFormatting("de_DE");
@@ -21,10 +23,10 @@ void main() {
       middleware: [
         LoggingMiddleware.printer(
             formatter: LoggingMiddleware.multiLineFormatter),
+        navigationMiddleware,
         authMiddleware,
         workTimeTrackerMiddleware
       ]);
-  store.dispatch(AppInitialized());
   runApp(OrganizerApp(store: store));
 }
 
@@ -44,7 +46,12 @@ class OrganizerApp extends StatelessWidget {
           primarySwatch: Colors.blueGrey,
           accentColor: Colors.amberAccent,
         ),
-        home: WorkTimeTrackerScreen(),
+        home: WelcomeScreen(),
+        routes: <String, WidgetBuilder>{
+          '/login': (context) => WelcomeScreen(),
+          '/worktimetracker': (context) => WorkTimeTrackerScreen()
+        },
+        navigatorKey: navigatorKey,
       ),
     );
   }
