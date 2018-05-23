@@ -48,3 +48,15 @@ class WorkTimeChangeEndTime {
   @override
   String toString() => 'WorkTimeChangeEndTime{day: $day, newTime: $newTime}';
 }
+
+@immutable
+class WorkTimeChangeIsWorkDay {
+  final Date day;
+  final bool isWorkDay;
+
+  WorkTimeChangeIsWorkDay(this.day, this.isWorkDay);
+
+  @override
+  String toString() =>
+      'WorkTimeChangeIsWorkDay{day: $day, isWorkDay: $isWorkDay}';
+}

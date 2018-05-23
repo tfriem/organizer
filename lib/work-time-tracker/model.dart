@@ -22,8 +22,9 @@ class Booking {
   final DateTime start;
   final DateTime end;
   final Duration breakDuration;
+  final bool isWorkDay;
 
-  Booking(this.start, this.end, this.breakDuration);
+  Booking(this.start, this.end, this.breakDuration, this.isWorkDay);
 
   bool isFullyBooked() => start != null && end != null;
 

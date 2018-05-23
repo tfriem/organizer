@@ -38,6 +38,7 @@ class HorizontalCalendar extends StatelessWidget {
       converter: (Store<AppState> store) => DayViewModel(
           store.state.workTimeTracker.selectedDate == day,
           store.state.workTimeTracker.bookings[day]?.isFullyBooked() ?? false,
+          store.state.workTimeTracker.bookings[day]?.isWorkDay ?? true,
           () => store.dispatch(WorkTimeSelectDay(day))),
       builder: (BuildContext context, DayViewModel vm) {
         final dateTime = day.toDateTime();
@@ -73,9 +74,13 @@ class HorizontalCalendar extends StatelessWidget {
               Icon(
                 vm.fullyBooked
                     ? Icons.check_box
-                    : Icons.check_box_outline_blank,
+                    : vm.isWorkDay
+                        ? Icons.check_box_outline_blank
+                        : Icons.alarm_off,
                 size: 14.0,
-                color: vm.fullyBooked ? Colors.green[400] : textColor,
+                color: vm.fullyBooked || !vm.isWorkDay
+                    ? Colors.green[400]
+                    : textColor,
               )
             ],
           ),
@@ -90,7 +95,8 @@ class HorizontalCalendar extends StatelessWidget {
 class DayViewModel {
   final bool selected;
   final bool fullyBooked;
+  final bool isWorkDay;
   final VoidCallback onClick;
 
-  DayViewModel(this.selected, this.fullyBooked, this.onClick);
+  DayViewModel(this.selected, this.fullyBooked, this.isWorkDay, this.onClick);
 }

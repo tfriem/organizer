@@ -44,6 +44,15 @@ workTimeTrackerMiddleware(Store<AppState> store, action, NextDispatcher next) {
         .collection('WorkTimeTracker')
         .document(_convertDateToDocumentId(action.day))
         .setData(data, merge: true);
+  } else if (action is WorkTimeChangeIsWorkDay) {
+    final data = {
+      'work_day': action.isWorkDay,
+      'owner': store.state.auth.user.id
+    };
+    Firestore.instance
+        .collection('WorkTimeTracker')
+        .document(_convertDateToDocumentId(action.day))
+        .setData(data, merge: true);
   }
 
   next(action);
@@ -54,9 +63,10 @@ Map<Date, Booking> _convertDocumentsToBookings(List<DocumentSnapshot> docs) {
     final start = doc.data['start'] as DateTime;
     final end = doc.data['end'] as DateTime;
     final breakTime = Duration(minutes: doc.data['break'] ?? 30);
+    final isWorkDay = doc.data['work_day'] ?? true;
 
     return MapEntry<Date, Booking>(_convertDocumentIdToDate(doc.documentID),
-        Booking(start, end, breakTime));
+        Booking(start, end, breakTime, isWorkDay));
   }));
 }
 

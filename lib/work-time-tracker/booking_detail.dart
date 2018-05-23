@@ -21,7 +21,9 @@ class BookingDetail extends StatelessWidget {
             (newTime) =>
                 store.dispatch(WorkTimeChangeStartTime(selectedDate, newTime)),
             (newTime) =>
-                store.dispatch(WorkTimeChangeEndTime(selectedDate, newTime)));
+                store.dispatch(WorkTimeChangeEndTime(selectedDate, newTime)),
+            (isWorkDay) => store
+                .dispatch(WorkTimeChangeIsWorkDay(selectedDate, isWorkDay)));
       },
       builder: (BuildContext context, BookingDetailViewModel vm) {
         TimeOfDay starTime;
@@ -43,7 +45,20 @@ class BookingDetail extends StatelessWidget {
             _buildTimeSelector(starTime, TimeOfDay(hour: 8, minute: 0), "Start",
                 vm.changeStartTime, context),
             _buildTimeSelector(endTime, TimeOfDay(hour: 17, minute: 0), "End",
-                vm.changeEndTime, context)
+                vm.changeEndTime, context),
+            Card(
+                child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('Work day?'),
+                  Switch(
+                      value: vm.booking?.isWorkDay ?? true,
+                      onChanged: vm.changeIsWorkDay),
+                ],
+              ),
+            ))
           ],
         );
       },
@@ -108,7 +123,8 @@ class BookingDetailViewModel {
   final Booking booking;
   final void Function(TimeOfDay newTime) changeStartTime;
   final void Function(TimeOfDay newTime) changeEndTime;
+  final void Function(bool isWorkDay) changeIsWorkDay;
 
-  BookingDetailViewModel(
-      this.selectedDay, this.booking, this.changeStartTime, this.changeEndTime);
+  BookingDetailViewModel(this.selectedDay, this.booking, this.changeStartTime,
+      this.changeEndTime, this.changeIsWorkDay);
 }
