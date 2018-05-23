@@ -42,10 +42,12 @@ class BookingDetail extends StatelessWidget {
                   DateFormat("yMMMMEEEEd").format(vm.selectedDay.toDateTime()),
                   style: Theme.of(context).textTheme.subhead),
             ),
+            Divider(),
             _buildTimeSelector(starTime, TimeOfDay(hour: 8, minute: 0), "Start",
                 vm.changeStartTime, context),
             _buildTimeSelector(endTime, TimeOfDay(hour: 17, minute: 0), "End",
                 vm.changeEndTime, context),
+            Divider(),
             Card(
                 child: Padding(
               padding: const EdgeInsets.all(12.0),
