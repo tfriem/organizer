@@ -18,15 +18,23 @@ void main() {
   initializeDateFormatting("de_DE");
   Intl.defaultLocale = "de_DE";
 
+  final middleware = [
+    navigationMiddleware,
+    authMiddleware,
+    workTimeTrackerMiddleware
+  ];
+
+// Only enable logging in debug mode
+  assert(() {
+    middleware.add(
+      LoggingMiddleware.printer(
+          formatter: LoggingMiddleware.multiLineFormatter),
+    );
+    return true;
+  }());
+
   final store = Store<AppState>(appReducer,
-      initialState: AppState.initialState(),
-      middleware: [
-        LoggingMiddleware.printer(
-            formatter: LoggingMiddleware.multiLineFormatter),
-        navigationMiddleware,
-        authMiddleware,
-        workTimeTrackerMiddleware
-      ]);
+      initialState: AppState.initialState(), middleware: middleware);
   runApp(OrganizerApp(store: store));
 }
 
