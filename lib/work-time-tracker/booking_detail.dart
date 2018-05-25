@@ -56,6 +56,7 @@ class BookingDetail extends StatelessWidget {
                 children: <Widget>[
                   Text('Work day?'),
                   Switch(
+                      activeColor: Theme.of(context).primaryColor,
                       value: vm.booking?.isWorkDay ?? true,
                       onChanged: vm.changeIsWorkDay),
                 ],
