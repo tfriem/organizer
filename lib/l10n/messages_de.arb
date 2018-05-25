@@ -1,0 +1,32 @@
+{
+  "loginMessage": "Melde dich mit Google an",
+  "@loginMessage": {
+    "description": "Login message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "timesTitle": "Zeiten",
+  "@timesTitle": {
+    "description": "Title for booking times screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "overviewTitle": "Auswertung",
+  "@overviewTitle": {
+    "description": "Title for times overview screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "graphsTitle": "Graphen",
+  "@graphsTitle": {
+    "description": "Title for graphs screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "workDay": "Arbeitstag?",
+  "@workDay": {
+    "description": "Work day option while booking times",
+    "type": "text",
+    "placeholders": {}
+  }
+}

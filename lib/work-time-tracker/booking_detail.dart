@@ -6,6 +6,7 @@ import 'package:redux/redux.dart';
 
 import '../app/model.dart';
 import '../core/date.dart';
+import '../l10n.dart';
 import 'actions.dart';
 import 'model.dart';
 
@@ -54,7 +55,7 @@ class BookingDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Work day?'),
+                  Text(OrganizerLocalization.of(context).workDay),
                   Switch(
                       activeColor: Theme.of(context).primaryColor,
                       value: vm.booking?.isWorkDay ?? true,

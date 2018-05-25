@@ -1,0 +1,1 @@
+flutter pub pub run intl_translation:extract_to_arb --locale en --output-dir=lib\l10n lib\l10n.dart

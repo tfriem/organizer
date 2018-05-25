@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import '../auth/actions.dart';
+import '../l10n.dart';
 import 'model.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             body: Center(
                 child: RaisedButton(
-              child: Text('Login with Google'),
+              child: Text(OrganizerLocalization.of(context).loginMessage),
               onPressed: vm.onLoginButtonClick,
             )));
       },

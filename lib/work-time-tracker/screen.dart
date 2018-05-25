@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n.dart';
 import 'booking_detail.dart';
 import 'graph.dart';
 import 'horizontal_calendar.dart';
@@ -15,9 +16,9 @@ class WorkTimeTrackerScreen extends StatelessWidget {
             title: Text('Work Time Tracker'),
             bottom: TabBar(
               tabs: <Widget>[
-                Tab(text: 'Times'),
-                Tab(text: 'Overview'),
-                Tab(text: 'Graphs')
+                Tab(text: OrganizerLocalization.of(context).timesTitle),
+                Tab(text: OrganizerLocalization.of(context).overviewTitle),
+                Tab(text: OrganizerLocalization.of(context).graphsTitle)
               ],
             ),
           ),

@@ -1,0 +1,34 @@
+{
+  "@@locale": "en",
+  "@@last_modified": "2018-05-25T20:01:57.296350",
+  "loginMessage": "Login with Google",
+  "@loginMessage": {
+    "description": "Login message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "timesTitle": "Times",
+  "@timesTitle": {
+    "description": "Title for booking times screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "overviewTitle": "Overview",
+  "@overviewTitle": {
+    "description": "Title for times overview screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "graphsTitle": "Graphs",
+  "@graphsTitle": {
+    "description": "Title for graphs screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "workDay": "Work day?",
+  "@workDay": {
+    "description": "Work day option while booking times",
+    "type": "text",
+    "placeholders": {}
+  }
+}
