@@ -13,8 +13,10 @@ AppState appReducer(AppState state, dynamic action) {
 }
 
 navigationMiddleware(Store<AppState> store, action, NextDispatcher next) {
-  if (action is NavigateAction) {
+  if (action is RoutePush) {
     navigatorKey.currentState.pushNamed(action.target);
+  } else if (action is RouteReplace) {
+    navigatorKey.currentState.pushReplacementNamed(action.target);
   }
   next(action);
 }

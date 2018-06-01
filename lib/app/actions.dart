@@ -1,8 +1,15 @@
 import 'package:meta/meta.dart';
 
 @immutable
-class NavigateAction {
+class RoutePush {
   final String target;
 
-  NavigateAction(this.target);
+  RoutePush(this.target);
+}
+
+@immutable
+class RouteReplace {
+  final String target;
+
+  RouteReplace(this.target);
 }

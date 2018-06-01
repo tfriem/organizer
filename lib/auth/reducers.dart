@@ -24,12 +24,12 @@ authMiddleware(Store<AppState> store, action, NextDispatcher next) {
       if (user != null) {
         store.dispatch(UserAuthenticationSucceeded(user));
         store.dispatch(WorkTimeBookingsLoadingRequestet());
-        store.dispatch(NavigateAction('/worktimetracker'));
+        store.dispatch(RouteReplace('/worktimetracker'));
       } else {
         _handleLogin().then((user) {
           store.dispatch(UserAuthenticationSucceeded(user));
           store.dispatch(WorkTimeBookingsLoadingRequestet());
-          store.dispatch(NavigateAction('/worktimetracker'));
+          store.dispatch(RouteReplace('/worktimetracker'));
         });
       }
     });
