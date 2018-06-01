@@ -3,7 +3,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import '../auth/actions.dart';
-import '../l10n.dart';
 import 'model.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -13,15 +12,12 @@ class WelcomeScreen extends StatelessWidget {
       converter: (Store<AppState> store) => WelcomeScreenViewModel(
           () => store.dispatch(UserAuthenticationRequested())),
       builder: (BuildContext context, WelcomeScreenViewModel vm) {
+        vm.login();
         return Scaffold(
             appBar: AppBar(
               title: Text('Organizer'),
             ),
-            body: Center(
-                child: RaisedButton(
-              child: Text(OrganizerLocalization.of(context).loginMessage),
-              onPressed: vm.onLoginButtonClick,
-            )));
+            body: Center(child: CircularProgressIndicator()));
       },
     );
   }
@@ -29,7 +25,7 @@ class WelcomeScreen extends StatelessWidget {
 
 @immutable
 class WelcomeScreenViewModel {
-  final VoidCallback onLoginButtonClick;
+  final VoidCallback login;
 
-  WelcomeScreenViewModel(this.onLoginButtonClick);
+  WelcomeScreenViewModel(this.login);
 }

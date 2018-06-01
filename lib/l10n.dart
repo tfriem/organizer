@@ -22,14 +22,6 @@ class OrganizerLocalization {
         context, OrganizerLocalization);
   }
 
-  String get loginMessage {
-    return Intl.message(
-      'Login with Google',
-      name: 'loginMessage',
-      desc: 'Login message',
-    );
-  }
-
   String get timesTitle {
     return Intl.message('Times',
         name: 'timesTitle', desc: 'Title for booking times screen');

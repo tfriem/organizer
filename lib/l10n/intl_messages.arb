@@ -1,12 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2018-05-25T20:01:57.296350",
-  "loginMessage": "Login with Google",
-  "@loginMessage": {
-    "description": "Login message",
-    "type": "text",
-    "placeholders": {}
-  },
+  "@@last_modified": "2018-06-01T20:44:35.074607",
   "timesTitle": "Times",
   "@timesTitle": {
     "description": "Title for booking times screen",

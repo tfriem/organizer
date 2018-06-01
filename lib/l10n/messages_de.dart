@@ -20,7 +20,6 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "graphsTitle" : MessageLookupByLibrary.simpleMessage("Graphen"),
-    "loginMessage" : MessageLookupByLibrary.simpleMessage("Melde dich mit Google an"),
     "overviewTitle" : MessageLookupByLibrary.simpleMessage("Auswertung"),
     "timesTitle" : MessageLookupByLibrary.simpleMessage("Zeiten"),
     "workDay" : MessageLookupByLibrary.simpleMessage("Arbeitstag?")
