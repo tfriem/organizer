@@ -27,7 +27,7 @@ class OrganizerLocalization {
       name: 'overviewTitle', desc: 'Title for times overview screen');
 
   String get chartsTitle => Intl.message('Charts',
-      name: 'graphsTitle', desc: 'Title for graphs screen');
+      name: 'chartsTitle', desc: 'Title for graphs screen');
 
   String get workDay => Intl.message('Work day?',
       name: 'workDay', desc: 'Work day option while booking times');
@@ -56,6 +56,9 @@ class OrganizerLocalization {
 
   String overviewDurationSum(sum) => Intl.message('Sum: $sum',
       name: 'overviewDurationSum', desc: 'Sum of overtime', args: [sum]);
+
+  String get detailWorkTime => Intl.message('Work time:',
+      name: 'detailWorkTime', desc: 'Work time for a day');
 }
 
 class OrganizerLocalizationsDelegate

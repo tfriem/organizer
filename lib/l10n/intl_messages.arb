@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2018-06-01T21:10:08.134154",
+  "@@last_modified": "2018-06-01T21:26:58.483078",
   "timesTitle": "Times",
   "@timesTitle": {
     "description": "Title for booking times screen",
@@ -10,6 +10,12 @@
   "overviewTitle": "Overview",
   "@overviewTitle": {
     "description": "Title for times overview screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chartsTitle": "Charts",
+  "@chartsTitle": {
+    "description": "Title for graphs screen",
     "type": "text",
     "placeholders": {}
   },
@@ -58,5 +64,11 @@
     "placeholders": {
       "sum": {}
     }
+  },
+  "detailWorkTime": "Work time:",
+  "@detailWorkTime": {
+    "description": "Work time for a day",
+    "type": "text",
+    "placeholders": {}
   }
 }

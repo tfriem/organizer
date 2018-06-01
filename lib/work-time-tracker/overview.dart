@@ -5,6 +5,7 @@ import 'package:redux/redux.dart';
 
 import '../app/model.dart';
 import '../l10n.dart';
+import 'util.dart';
 
 class Overview extends StatelessWidget {
   @override
@@ -48,8 +49,9 @@ class Overview extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              OrganizerLocalization.of(context).overviewAverageStarting(
-                  _formatDuration(vm.averageStartTime)),
+              OrganizerLocalization
+                  .of(context)
+                  .overviewAverageStarting(formatDuration(vm.averageStartTime)),
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -58,7 +60,7 @@ class Overview extends StatelessWidget {
             child: Text(
               OrganizerLocalization
                   .of(context)
-                  .overviewAverageEnd(_formatDuration(vm.averageEndTime)),
+                  .overviewAverageEnd(formatDuration(vm.averageEndTime)),
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -66,7 +68,7 @@ class Overview extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Text(
                 OrganizerLocalization.of(context).overviewAverageDuration(
-                    _formatDuration(vm.averageWorkDuration)),
+                    formatDuration(vm.averageWorkDuration)),
                 style: Theme.of(context).textTheme.subhead),
           ),
           Padding(
@@ -74,7 +76,7 @@ class Overview extends StatelessWidget {
               child: Text(
                   OrganizerLocalization
                       .of(context)
-                      .overviewDurationSum(_formatDuration(vm.workSaldo.abs())),
+                      .overviewDurationSum(formatDuration(vm.workSaldo.abs())),
                   style: TextStyle(
                       color: vm.workSaldo.isNegative
                           ? Colors.red
@@ -91,9 +93,6 @@ Duration _calculateAverageTime(List<Duration> times) {
   }
   return times.fold(Duration(), (sum, time) => sum + time) ~/ times.length;
 }
-
-String _formatDuration(Duration duration) =>
-    '${duration.inHours.toString().padLeft(2,'0')}:${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
 
 @immutable
 class OverviewViewModel {

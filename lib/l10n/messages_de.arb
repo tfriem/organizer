@@ -11,6 +11,12 @@
     "type": "text",
     "placeholders": {}
   },
+  "chartsTitle": "Diagramme",
+  "@chartsTitle": {
+    "description": "Title for graphs screen",
+    "type": "text",
+    "placeholders": {}
+  },
   "workDay": "Arbeitstag?",
   "@workDay": {
     "description": "Work day option while booking times",
@@ -56,5 +62,11 @@
     "placeholders": {
       "sum": {}
     }
+  },
+  "detailWorkTime": "Arbeitszeit:",
+  "@detailWorkTime": {
+    "description": "Work time for a day",
+    "type": "text",
+    "placeholders": {}
   }
 }

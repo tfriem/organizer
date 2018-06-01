@@ -9,6 +9,7 @@ import '../core/date.dart';
 import '../l10n.dart';
 import 'actions.dart';
 import 'model.dart';
+import 'util.dart';
 
 class BookingDetail extends StatelessWidget {
   @override
@@ -48,6 +49,18 @@ class BookingDetail extends StatelessWidget {
                 vm.changeStartTime, context),
             _buildTimeSelector(endTime, TimeOfDay(hour: 17, minute: 0), "End",
                 vm.changeEndTime, context),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(OrganizerLocalization.of(context).detailWorkTime),
+                    Text(formatDuration(vm.workTime))
+                  ],
+                ),
+              ),
+            ),
             Divider(),
             Card(
                 child: Padding(
@@ -62,7 +75,7 @@ class BookingDetail extends StatelessWidget {
                       onChanged: vm.changeIsWorkDay),
                 ],
               ),
-            ))
+            )),
           ],
         );
       },
@@ -131,4 +144,11 @@ class BookingDetailViewModel {
 
   BookingDetailViewModel(this.selectedDay, this.booking, this.changeStartTime,
       this.changeEndTime, this.changeIsWorkDay);
+
+  Duration get workTime {
+    if (booking == null || !booking.isFullyBooked()) {
+      return Duration();
+    }
+    return booking.end.difference(booking.start);
+  }
 }

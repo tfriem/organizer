@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "chartsTitle" : MessageLookupByLibrary.simpleMessage("Diagramme"),
+    "detailWorkTime" : MessageLookupByLibrary.simpleMessage("Arbeitszeit:"),
     "overviewAverageDuration" : m0,
     "overviewAverageEnd" : m1,
     "overviewAverageStarting" : m2,
