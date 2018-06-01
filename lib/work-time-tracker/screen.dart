@@ -18,7 +18,7 @@ class WorkTimeTrackerScreen extends StatelessWidget {
               tabs: <Widget>[
                 Tab(text: OrganizerLocalization.of(context).timesTitle),
                 Tab(text: OrganizerLocalization.of(context).overviewTitle),
-                Tab(text: OrganizerLocalization.of(context).graphsTitle)
+                Tab(text: OrganizerLocalization.of(context).chartsTitle)
               ],
             ),
           ),

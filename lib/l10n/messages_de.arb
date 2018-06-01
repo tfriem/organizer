@@ -1,10 +1,4 @@
 {
-  "loginMessage": "Melde dich mit Google an",
-  "@loginMessage": {
-    "description": "Login message",
-    "type": "text",
-    "placeholders": {}
-  },
   "timesTitle": "Zeiten",
   "@timesTitle": {
     "description": "Title for booking times screen",
@@ -17,16 +11,50 @@
     "type": "text",
     "placeholders": {}
   },
-  "graphsTitle": "Graphen",
-  "@graphsTitle": {
-    "description": "Title for graphs screen",
-    "type": "text",
-    "placeholders": {}
-  },
   "workDay": "Arbeitstag?",
   "@workDay": {
     "description": "Work day option while booking times",
     "type": "text",
     "placeholders": {}
+  },
+  "overviewBookedDays": "Gebuchte Tage: {days}",
+  "@overviewBookedDays": {
+    "description": "Label for number of booked days",
+    "type": "text",
+    "placeholders": {
+      "days": {}
+    }
+  },
+  "overviewAverageStarting": "Durchschnittliche Startzeit: {time}",
+  "@overviewAverageStarting": {
+    "description": "Label for the average starting time",
+    "type": "text",
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "overviewAverageEnd": "Durchschnittliche Endzeit: {time}",
+  "@overviewAverageEnd": {
+    "description": "Label for the average end time",
+    "type": "text",
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "overviewAverageDuration": "Durchschnittliche Arbeitsdauer: {duration}",
+  "@overviewAverageDuration": {
+    "description": "Label for the average work duration",
+    "type": "text",
+    "placeholders": {
+      "duration": {}
+    }
+  },
+  "overviewDurationSum": "Summe: {sum}",
+  "@overviewDurationSum": {
+    "description": "Sum of overtime",
+    "type": "text",
+    "placeholders": {
+      "sum": {}
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2018-06-01T20:44:35.074607",
+  "@@last_modified": "2018-06-01T21:10:08.134154",
   "timesTitle": "Times",
   "@timesTitle": {
     "description": "Title for booking times screen",
@@ -13,16 +13,50 @@
     "type": "text",
     "placeholders": {}
   },
-  "graphsTitle": "Graphs",
-  "@graphsTitle": {
-    "description": "Title for graphs screen",
-    "type": "text",
-    "placeholders": {}
-  },
   "workDay": "Work day?",
   "@workDay": {
     "description": "Work day option while booking times",
     "type": "text",
     "placeholders": {}
+  },
+  "overviewBookedDays": "Booked days: {days}",
+  "@overviewBookedDays": {
+    "description": "Label for number of booked days",
+    "type": "text",
+    "placeholders": {
+      "days": {}
+    }
+  },
+  "overviewAverageStarting": "Average starting time: {time}",
+  "@overviewAverageStarting": {
+    "description": "Label for the average starting time",
+    "type": "text",
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "overviewAverageEnd": "Average end time: {time}",
+  "@overviewAverageEnd": {
+    "description": "Label for the average end time",
+    "type": "text",
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "overviewAverageDuration": "Average work duration: {duration}",
+  "@overviewAverageDuration": {
+    "description": "Label for the average work duration",
+    "type": "text",
+    "placeholders": {
+      "duration": {}
+    }
+  },
+  "overviewDurationSum": "Sum: {sum}",
+  "@overviewDurationSum": {
+    "description": "Sum of overtime",
+    "type": "text",
+    "placeholders": {
+      "sum": {}
+    }
   }
 }

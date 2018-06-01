@@ -17,9 +17,23 @@ typedef MessageIfAbsent(String message_str, List args);
 class MessageLookup extends MessageLookupByLibrary {
   get localeName => 'de';
 
+  static m0(duration) => "Durchschnittliche Arbeitsdauer: ${duration}";
+
+  static m1(time) => "Durchschnittliche Endzeit: ${time}";
+
+  static m2(time) => "Durchschnittliche Startzeit: ${time}";
+
+  static m3(days) => "Gebuchte Tage: ${days}";
+
+  static m4(sum) => "Summe: ${sum}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "graphsTitle" : MessageLookupByLibrary.simpleMessage("Graphen"),
+    "overviewAverageDuration" : m0,
+    "overviewAverageEnd" : m1,
+    "overviewAverageStarting" : m2,
+    "overviewBookedDays" : m3,
+    "overviewDurationSum" : m4,
     "overviewTitle" : MessageLookupByLibrary.simpleMessage("Auswertung"),
     "timesTitle" : MessageLookupByLibrary.simpleMessage("Zeiten"),
     "workDay" : MessageLookupByLibrary.simpleMessage("Arbeitstag?")

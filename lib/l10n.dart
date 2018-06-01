@@ -17,30 +17,45 @@ class OrganizerLocalization {
     });
   }
 
-  static OrganizerLocalization of(BuildContext context) {
-    return Localizations.of<OrganizerLocalization>(
-        context, OrganizerLocalization);
-  }
+  static OrganizerLocalization of(BuildContext context) =>
+      Localizations.of<OrganizerLocalization>(context, OrganizerLocalization);
 
-  String get timesTitle {
-    return Intl.message('Times',
-        name: 'timesTitle', desc: 'Title for booking times screen');
-  }
+  String get timesTitle => Intl.message('Times',
+      name: 'timesTitle', desc: 'Title for booking times screen');
 
-  String get overviewTitle {
-    return Intl.message('Overview',
-        name: 'overviewTitle', desc: 'Title for times overview screen');
-  }
+  String get overviewTitle => Intl.message('Overview',
+      name: 'overviewTitle', desc: 'Title for times overview screen');
 
-  String get graphsTitle {
-    return Intl.message('Graphs',
-        name: 'graphsTitle', desc: 'Title for graphs screen');
-  }
+  String get chartsTitle => Intl.message('Charts',
+      name: 'graphsTitle', desc: 'Title for graphs screen');
 
-  String get workDay {
-    return Intl.message('Work day?',
-        name: 'workDay', desc: 'Work day option while booking times');
-  }
+  String get workDay => Intl.message('Work day?',
+      name: 'workDay', desc: 'Work day option while booking times');
+
+  String overviewBookedDays(days) => Intl.message('Booked days: $days',
+      name: 'overviewBookedDays',
+      desc: 'Label for number of booked days',
+      args: [days]);
+
+  String overviewAverageStarting(time) =>
+      Intl.message('Average starting time: $time',
+          name: 'overviewAverageStarting',
+          desc: 'Label for the average starting time',
+          args: [time]);
+
+  String overviewAverageEnd(time) => Intl.message('Average end time: $time',
+      name: 'overviewAverageEnd',
+      desc: 'Label for the average end time',
+      args: [time]);
+
+  String overviewAverageDuration(duration) =>
+      Intl.message('Average work duration: $duration',
+          name: 'overviewAverageDuration',
+          desc: 'Label for the average work duration',
+          args: [duration]);
+
+  String overviewDurationSum(sum) => Intl.message('Sum: $sum',
+      name: 'overviewDurationSum', desc: 'Sum of overtime', args: [sum]);
 }
 
 class OrganizerLocalizationsDelegate

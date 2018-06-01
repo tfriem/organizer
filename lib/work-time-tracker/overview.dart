@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
 import '../app/model.dart';
+import '../l10n.dart';
 
 class Overview extends StatelessWidget {
   @override
@@ -38,33 +39,42 @@ class Overview extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'Booked days: ${vm.bookedDays}',
+              OrganizerLocalization
+                  .of(context)
+                  .overviewBookedDays(vm.bookedDays),
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'Average starting time: ${_formatDuration(vm.averageStartTime)}',
+              OrganizerLocalization.of(context).overviewAverageStarting(
+                  _formatDuration(vm.averageStartTime)),
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'Average ending time: ${_formatDuration(vm.averageEndTime)}',
+              OrganizerLocalization
+                  .of(context)
+                  .overviewAverageEnd(_formatDuration(vm.averageEndTime)),
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-                'Average duration: ${_formatDuration(vm.averageWorkDuration)}',
+                OrganizerLocalization.of(context).overviewAverageDuration(
+                    _formatDuration(vm.averageWorkDuration)),
                 style: Theme.of(context).textTheme.subhead),
           ),
           Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Text('Saldo: ${_formatDuration(vm.workSaldo.abs())}',
+              child: Text(
+                  OrganizerLocalization
+                      .of(context)
+                      .overviewDurationSum(_formatDuration(vm.workSaldo.abs())),
                   style: TextStyle(
                       color: vm.workSaldo.isNegative
                           ? Colors.red
