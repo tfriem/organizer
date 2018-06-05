@@ -146,9 +146,9 @@ class BookingDetailViewModel {
       this.changeEndTime, this.changeIsWorkDay);
 
   Duration get workTime {
-    if (booking == null || !booking.isFullyBooked()) {
+    if (booking == null) {
       return Duration();
     }
-    return booking.end.difference(booking.start);
+    return booking.workTime;
   }
 }

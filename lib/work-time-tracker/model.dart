@@ -28,6 +28,13 @@ class Booking {
 
   bool isFullyBooked() => start != null && end != null;
 
+  Duration get workTime {
+    if (!isFullyBooked()) {
+      return Duration();
+    }
+    return end.difference(start) - Duration(minutes: 30);
+  }
+
   @override
   String toString() =>
       'Booking{start: $start, end: $end, breakDuration: $breakDuration}';
