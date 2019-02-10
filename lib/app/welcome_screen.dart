@@ -12,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
       converter: (Store<AppState> store) => WelcomeScreenViewModel(
           () => store.dispatch(UserAuthenticationRequested())),
       builder: (BuildContext context, WelcomeScreenViewModel vm) {
-        vm.login();
+        // vm.login();
         return Scaffold(
             appBar: AppBar(
               title: Text('Organizer'),

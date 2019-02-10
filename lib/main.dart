@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:organizer/auth/actions.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 
@@ -32,6 +33,7 @@ void main() {
 
   final store = Store<AppState>(appReducer,
       initialState: AppState.initialState(), middleware: middleware);
+  store.dispatch(UserAuthenticationRequested());
   runApp(OrganizerApp(store: store));
 }
 
