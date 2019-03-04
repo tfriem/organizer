@@ -33,7 +33,7 @@ void main() {
 
   final store = Store<AppState>(appReducer,
       initialState: AppState.initialState(), middleware: middleware);
-  store.dispatch(UserAuthenticationRequested());
+  // store.dispatch(UserAuthenticationRequested());
   runApp(OrganizerApp(store: store));
 }
 

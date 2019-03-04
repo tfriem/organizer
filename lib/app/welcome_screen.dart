@@ -17,7 +17,12 @@ class WelcomeScreen extends StatelessWidget {
             appBar: AppBar(
               title: Text('Organizer'),
             ),
-            body: Center(child: CircularProgressIndicator()));
+            body: Center(
+                child: RaisedButton(
+              child: const Text('Login'),
+              color: Theme.of(context).accentColor,
+              onPressed: vm.login,
+            )));
       },
     );
   }
